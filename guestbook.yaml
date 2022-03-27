@@ -5,11 +5,13 @@ metadata:
   namespace: argocd
 project: default
 source:
-  repoURL: 'https://github.com/anilnokia/argocd-example-apps.git'
+  repoURL: https://github.com/anilnokia/argocd-example-apps.git
   path: kustomize-guestbook
   targetRevision: HEAD
 destination:
-  server: 'https://kubernetes.default.svc'
+  server: https://kubernetes.default.svc
   namespace: default
 syncPolicy:
-  automated: {}
+    automated:
+      selfHeal: true
+      prune: true
