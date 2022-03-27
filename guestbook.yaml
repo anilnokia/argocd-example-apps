@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: anil-guestbook-argo-application
+  namespace: argocd
+project: default
+source:
+  repoURL: 'https://github.com/anilnokia/argocd-example-apps.git'
+  path: kustomize-guestbook
+  targetRevision: HEAD
+destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: default
+syncPolicy:
+  automated: {}
