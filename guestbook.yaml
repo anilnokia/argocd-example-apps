@@ -3,15 +3,21 @@ kind: Application
 metadata:
   name: anil-guestbook-argo-application
   namespace: argocd
-project: default
-source:
-  repoURL: https://github.com/anilnokia/argocd-example-apps.git
-  path: kustomize-guestbook
-  targetRevision: HEAD
-destination:
-  server: https://kubernetes.default.svc
-  namespace: default
-syncPolicy:
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/anilnokia/argocd-example-apps.git
+    targetRevision: HEAD
+    path: kustomize-guestbook
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
     automated:
       selfHeal: true
       prune: true
