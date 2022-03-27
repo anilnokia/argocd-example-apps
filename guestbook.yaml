@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: anil-guestbook-argo-application
+  name: anil-guestbook-kustomize
   namespace: argocd
 spec:
   project: default
